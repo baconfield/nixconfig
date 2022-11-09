@@ -2,12 +2,14 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-        ./hardware-configuration.nix
+    [
+      ./hardware-configuration.nix
     ];
 
   boot = {
     loader.systemd-boot.enable = true;
+    loader.systemd-boot.editor = false; # Hardening
+    loader.systemd-boot.configurationLimit = 15;
     loader.efi.canTouchEfiVariables = true;
     initrd.supportedFilesystems = [ "zfs" ];
     supportedFilesystems = [ "zfs" ];
@@ -20,8 +22,22 @@
     interfaces.enp1s0.useDHCP = true;
     interfaces.enp5s0.useDHCP = true;
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 5600 8384 22000 ];
-    firewall.allowedUDPPorts = [ 22000 21027 ];
+    firewall.allowedTCPPorts = [ 5600 8096 8384 8920 22000 ];
+    firewall.allowedUDPPorts = [ 1900 7359 22000 21027 ];
+  };
+  
+  containers.jellyfin = { # Uses ports 1900, 7359, 8096, and 8920
+    autoStart = true;
+    bindMounts = {
+      "/filepit/music" = { hostPath = "/filepit/music"; };
+      "/filepit/videos" = { hostPath = "/filepit/videos"; };
+    };
+    config = { config, pkgs, ... }: {
+      services.jellyfin.enable = true;
+      services.jellyfin.openFirewall = true;
+      networking.firewall.enable = true;
+      system.stateVersion = "22.05";
+    };
   };
 
   services = {
@@ -71,11 +87,9 @@
 
   environment.systemPackages = with pkgs; [
     btop
-    fish
     git
     micro
     neofetch
-    syncthing
   ];
 
   time.timeZone = "America/Central";
@@ -84,9 +98,11 @@
   users.users.tjcater = {
      isNormalUser = true;
      shell = pkgs.fish;
-     home = "/home/tjcater";
      extraGroups = [ "wheel" ];
-     initialHashedPassword = "bacon"; # Didn't actually do anything?
+     initialHashedPassword = "[REDACTED]"; # Use `mkpasswd -m sha-512` for secret
+     openssh.authorizedKeys.keys = [
+      "[REDACTED]"
+     ];
   };
 
   system = {
