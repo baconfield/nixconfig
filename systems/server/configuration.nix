@@ -18,9 +18,6 @@
   networking = {
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
-    useDHCP = false;
-    interfaces.enp1s0.useDHCP = true;
-    interfaces.enp5s0.useDHCP = true;
     firewall.enable = true;
     firewall.allowedTCPPorts = [ 5600 8096 8384 8920 22000 ];
     firewall.allowedUDPPorts = [ 1900 7359 22000 21027 ];
