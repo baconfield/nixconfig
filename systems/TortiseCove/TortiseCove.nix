@@ -57,7 +57,7 @@
       };
   };
 
-  services = {
+  services = { # Uses port 6443
     k3s = {
       enable = true;
       role = "server";
