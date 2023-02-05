@@ -20,7 +20,7 @@
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
     firewall.enable = true;
-    firewall.allowedTCPPorts = [ 5600 8096 8384 8920 22000 ];
+    firewall.allowedTCPPorts = [ 5600 6443 8096 8384 8920 22000 ];
     firewall.allowedUDPPorts = [ 1900 7359 22000 21027 ];
   };
 
@@ -38,7 +38,33 @@
     };
   };
 
+  virtualisation.containerd = {
+    enable = true;
+    settings =
+      let
+        fullCNIPlugins = pkgs.buildEnv {
+          name = "full-cni";
+          paths = with pkgs;[
+            cni-plugins
+            cni-plugin-flannel
+          ];
+        };
+      in {
+        plugins."io.containerd.grpc.v1.cri".cni = {
+          bin_dir = "${fullCNIPlugins}/bin";
+          conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d/";
+        };
+      };
+  };
+
   services = {
+    k3s = {
+      enable = true;
+      role = "server";
+      extraFlags = toString [
+        "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
+      ];
+    };
     openssh = {
       enable = true;
       permitRootLogin = "no";
@@ -92,6 +118,7 @@
   environment.systemPackages = with pkgs; [
     btop
     git
+    k3s
     micro
     neofetch
   ];
