@@ -20,6 +20,15 @@
         agenix.nixosModules.default
       ];
     };
+    nixosConfigurations.TanukiGrove = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./server.nix
+        ./services/syncthing.nix
+        ./systems/TanukiGrove/TanukiGrove.nix
+        agenix.nixosModules.default
+      ];
+    };
     nixosConfigurations.TortiseCove = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
