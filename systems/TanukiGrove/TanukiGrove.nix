@@ -13,23 +13,7 @@
     firewall.allowedUDPPorts = [ 22000 ];
   };
 
-  services.syncthing = {
-    guiAddress = "10.0.1.10:8384";
-    devices = {
-      "BaconField" = { id = "[REDACTED]"; };
-      "DoveTrail"   = { id = "[REDACTED]"; };
-      "FoxSummit"   = { id = "[REDACTED]"; };
-      "TortiseCove" = { id = "[REDACTED]"; };
-    };
-    folders =
-      let devices = [ "BaconField" "DoveTrail" "FoxSummit" "TanukiGrove" ];
-      in {
-        "Documents".devices = devices;
-        "Music".devices = devices;
-        "Pictures".devices = devices;
-        "Videos".devices = devices;
-      };
-  };
+  services.syncthing.guiAddress = "10.0.1.10:8384";
 
   system.stateVersion = "22.11";
 }
