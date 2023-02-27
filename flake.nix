@@ -7,6 +7,7 @@
       system = "x86_64-linux";
       modules = [
         ./server.nix
+        ./services/syncthing.nix
         ./systems/DoveTrail/DoveTrail.nix
         agenix.nixosModules.default
       ];
@@ -23,6 +24,7 @@
       system = "x86_64-linux";
       modules = [
         ./server.nix
+        ./services/syncthing.nix
         ./systems/TortiseCove/TortiseCove.nix
         agenix.nixosModules.default
       ];

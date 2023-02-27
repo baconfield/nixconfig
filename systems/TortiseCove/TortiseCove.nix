@@ -15,7 +15,7 @@
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
     firewall.allowedTCPPorts = [ 5600 6443 8096 8384 8920 22000 ];
-    firewall.allowedUDPPorts = [ 1900 7359 22000 21027 ];
+    firewall.allowedUDPPorts = [ 1900 7359 22000 ];
   };
 
   containers.jellyfin = { # Uses ports 1900, 7359, 8096, and 8920
@@ -59,38 +59,22 @@
     ];
   };
 
-  services.syncthing = { # Uses ports 8384, 22000, and 21027
-    enable = true;
+  services.syncthing = { # Uses ports 8384 and 22000
     user = "tjcater";
-    dataDir = "/filepit"; # Default folder for newly synced folders
     configDir = "/home/tjcater/.config/syncthing";
-    guiAddress = "0.0.0.0:8384";
+    guiAddress = "10.0.1.100:8384";
     devices = {
+      "DoveTrail" = { id = "[REDACTED]"; };
       "FoxSummit" = { id = "[REDACTED]"; };
-      "DoveTrail" = { id = "[REDACTED]"; }; # Need to replace id once reestablished
     };
-    folders = {
-      "Documents" = {
-        id = "[REDACTED]";
-        path = "/filepit/documents";
-        devices = [ "FoxSummit" "DoveTrail" ];
+    folders =
+      let devices = [ "DoveTrail" "FoxSummit" ]
+      in {
+        "Documents".devices = devices;
+        "Music".devices = devices;
+        "Pictures".devices = devices;
+        "Videos".devices = devices;
       };
-      "Music" = {
-        id = "[REDACTED]";
-        path = "/filepit/music";
-        devices = [ "FoxSummit" "DoveTrail" ];
-      };
-      "Pictures" = {
-        id = "[REDACTED]";
-        path = "/filepit/pictures";
-        devices = [ "FoxSummit" "DoveTrail" ];
-      };
-      "Videos" = {
-        id = "[REDACTED]";
-        path = "/filepit/videos";
-        devices = [ "FoxSummit" "DoveTrail" ];
-      };
-    };
   };
 
   services.udev.extraRules = ''
