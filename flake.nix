@@ -6,6 +6,7 @@
     nixosConfigurations.DoveTrail = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./server.nix
         ./systems/DoveTrail/DoveTrail.nix
         agenix.nixosModules.default
       ];
@@ -13,6 +14,7 @@
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./server.nix
         ./systems/RaccoonRapids/RaccoonRapids.nix
         agenix.nixosModules.default
       ];
@@ -20,6 +22,7 @@
     nixosConfigurations.TortiseCove = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./server.nix
         ./systems/TortiseCove/TortiseCove.nix
         agenix.nixosModules.default
       ];

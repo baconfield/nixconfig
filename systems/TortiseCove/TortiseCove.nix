@@ -7,10 +7,6 @@
     ];
 
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.systemd-boot.editor = false; # Hardening
-    loader.systemd-boot.configurationLimit = 15;
-    loader.efi.canTouchEfiVariables = true;
     initrd.supportedFilesystems = [ "zfs" ];
     supportedFilesystems = [ "zfs" ];
   };
@@ -18,7 +14,6 @@
   networking = {
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
-    firewall.enable = true;
     firewall.allowedTCPPorts = [ 5600 6443 8096 8384 8920 22000 ];
     firewall.allowedUDPPorts = [ 1900 7359 22000 21027 ];
   };
@@ -63,12 +58,6 @@
       extraFlags = toString [
         "--write-kubeconfig-mode --container-runtime-endpoint unix:///run/containerd/containerd.sock"
       ];
-    };
-    openssh = {
-      enable = true;
-      permitRootLogin = "no";
-      passwordAuthentication = false;
-      ports = [ 5600 ];
     };
     syncthing = { # Uses ports 8384, 22000, and 21027
       enable = true;
@@ -122,20 +111,5 @@
     neofetch
   ];
 
-  time.timeZone = "America/Central";
-
-  users.users.tjcater = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    extraGroups = [ "wheel" ];
-    openssh.authorizedKeys.keys = [
-      "[REDACTED]"
-    ];
-  };
-
-  system = {
-    stateVersion = "21.11";
-    autoUpgrade.enable = true;
-    autoUpgrade.allowReboot = true; # Need to look into upgrade notifications
-  };
+  system.stateVersion = "21.11";
 }
