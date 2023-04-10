@@ -20,6 +20,7 @@
 
   age.secrets = {
     credentials.file = "/etc/nixos/secrets/credentials.age";
+    nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
   };
 
   security.acme= {
@@ -62,63 +63,9 @@
     };
   };
 
-  containers.nextcloud = {
-    autoStart = true;
-    bindMounts."/filepit/nextcloud" = {
-      hostPath = "/filepit/nextcloud";
-      isReadOnly = false;
-    };
-    config = { config, pkgs, ... }: {
-      age.secrets.nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
-      services.nextcloud = {
-        enable = true;
-        package = pkgs.nextcloud26;
-        hostName = "cloud.tortisecove.xyz";
-        https = true;
-        config = {
-          dbtype = "pgsql";
-          dbuser = "nextcloud";
-          dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
-          dbname = "nextcloud";
-          adminpassFile = config.age.secrets.nextcloudPass.path;
-          adminuser = "root";
-        };
-        caching.redis = true;
-        caching.apcu = false;
-        extraOptions = {
-          redis = {
-            host = "/run/redis-nextcloud/redis.sock";
-            port = 0;
-          };
-          memcache = {
-            local = "\\OC\\Memcache\\Redis";
-            distributed = "\\OC\\Memcache\\Redis";
-            locking = "\\OC\\Memcache\\Redis";
-          };
-        };
-      };
-      services.postgresql = {
-        enable = true;
-        ensureDatabases = [ "nextcloud" ];
-        ensureUsers = [
-        { name = "nextcloud";
-          ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
-        }
-        ];
-      };
-      services.redis.servers.nextcloud = {
-        enable = true;
-        user = "nextcloud";
-        port = 0;
-      };
-      systemd.services."nextcloud-setup" = {
-        requires = ["postgresql.service"];
-        after = ["postgresql.service"];
-      };
-      networking.firewall.enable = true;
-      networking.firewall.allowedTCPPorts = [ 80 443 ];
-      system.stateVersion = "22.11";
-    };
+  services.nextcloud = {
+    hostName = "cloud.tortisecove.xyz";
+    config.adminpassFile = config.age.secrets.nextcloudPass.path;
   };
 
   services.syncthing = { # Uses ports 8384 and 22000
