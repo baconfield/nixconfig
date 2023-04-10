@@ -6,7 +6,7 @@ let
     DoveTrail = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQysvK01pWVVxeYJ0e/TCBmJ9rotds/GhzLLfsPChfK";
     RaccoonRapids = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFh6+nX/vmyP5MSijcbL3Dv5NBI1hllZ396I45xnhpLr";
     systems = [ Foxsummit TortiseCove DoveTrail RaccoonRapids ];
-in {
-    "publicKeys.age".publicKeys = systems;
-    "hostId.age".publicKeys = TortiseCove;
-} # agenix -e publicKeys.age
+in
+{
+    "credentials.age".publicKeys = [TortiseCove Foxsummit];
+} # nix run github:ryantm/agenix -- -e credentials.age
