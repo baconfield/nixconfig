@@ -14,7 +14,7 @@
   networking = {
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
-    firewall.allowedTCPPorts = [ 5600 6443 8096 8384 8920 22000 ];
+    firewall.allowedTCPPorts = [ 80 443 5600 6443 8096 8384 8920 22000 ];
     firewall.allowedUDPPorts = [ 1900 7359 22000 ];
   };
 
@@ -29,6 +29,25 @@
       services.jellyfin.openFirewall = true;
       networking.firewall.enable = true;
       system.stateVersion = "22.05";
+    };
+  };
+
+  age.secrets = {
+    credentials.file = "/etc/nixos/secrets/credentials.age";
+  };
+
+  security.acme.certs."tortisecove.xyz" = {
+    domain  = "*.tortisecove.xyz";
+    dnsProvider = "namecheap";
+    credentialsFile = config.age.secrets.credentials.path;
+  };
+
+  services.ngnix.virtualHosts."jellyfin.tortisecove.xyz" = {
+    enableACME = true;
+    acmeRoot = null;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:8096";
     };
   };
 
