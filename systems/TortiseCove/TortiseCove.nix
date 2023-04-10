@@ -20,7 +20,11 @@
 
   age.secrets = {
     credentials.file = "/etc/nixos/secrets/credentials.age";
-    nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
+    nextcloudPass = {
+      file = "/etc/nixos/secrets/nextcloudPass.age";
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
   };
 
   security.acme= {
