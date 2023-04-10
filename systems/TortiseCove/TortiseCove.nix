@@ -38,7 +38,7 @@
 
   security.acme.certs."tortisecove.xyz" = {
     domain  = "*.tortisecove.xyz";
-    dnsProvider = "namecheap";
+    dnsProvider = "cloudflare";
     credentialsFile = config.age.secrets.credentials.path;
   };
 
