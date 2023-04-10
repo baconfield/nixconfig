@@ -30,6 +30,8 @@
 
   time.timeZone = "America/Central";
 
+  programs.fish.enable = true;
+
   users.users.tjcater = {
     isNormalUser = true;
     shell = pkgs.fish;
