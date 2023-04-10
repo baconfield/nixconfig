@@ -36,10 +36,14 @@
     credentials.file = "/etc/nixos/secrets/credentials.age";
   };
 
-  security.acme.certs."tortisecove.xyz" = {
-    domain  = "*.tortisecove.xyz";
-    dnsProvider = "cloudflare";
-    credentialsFile = config.age.secrets.credentials.path;
+  security.acme= {
+    defaults = {
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets.credentials.path;
+    };
+    certs."tortisecove.xyz" = {
+      domain  = "*.tortisecove.xyz";
+    };
   };
 
   services.nginx.virtualHosts."jellyfin.tortisecove.xyz" = {
