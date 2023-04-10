@@ -1,6 +1,8 @@
 {
-  inputs = {
-    agenix.url = "github:ryantm/agenix";
+  inputs.agenix = {
+    url = "github:ryantm/agenix";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.darwin.follows = "";
   };
   outputs = { self, nixpkgs, agenix, ... }: {
     nixosConfigurations.DoveTrail = nixpkgs.lib.nixosSystem {
