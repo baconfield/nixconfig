@@ -42,7 +42,7 @@
     credentialsFile = config.age.secrets.credentials.path;
   };
 
-  services.ngnix.virtualHosts."jellyfin.tortisecove.xyz" = {
+  services.nginx.virtualHosts."jellyfin.tortisecove.xyz" = {
     enableACME = true;
     acmeRoot = null;
     forceSSL = true;

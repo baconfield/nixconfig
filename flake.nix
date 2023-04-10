@@ -35,7 +35,7 @@
       system = "x86_64-linux";
       modules = [
         ./server.nix
-        ./services/ngnix.nix
+        ./services/nginx.nix
         ./services/syncthing.nix
         ./systems/TortiseCove/TortiseCove.nix
         agenix.nixosModules.default

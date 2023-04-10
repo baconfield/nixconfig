@@ -6,7 +6,7 @@
     defaults.email = "baconfield@protonmail.com";
   };
 
-  services.ngnix = {
+  services.nginx = {
     enable = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
