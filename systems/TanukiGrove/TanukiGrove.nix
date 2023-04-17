@@ -14,5 +14,14 @@
 
   services.syncthing.guiAddress = "10.0.1.10:8384";
 
+  environment.systemPackages = with pkgs; [
+    btop
+    fishPlugins.tide
+    git
+    gping
+    micro
+    neofetch
+  ];
+
   system.stateVersion = "22.11";
 }

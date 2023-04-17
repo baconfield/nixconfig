@@ -41,7 +41,9 @@
 
   environment.systemPackages = with pkgs; [
     btop
+    fishPlugins.tide
     git
+    gping
     micro
     neofetch
   ];
