@@ -6,13 +6,13 @@ TortiseCove - Primary server which hosts Nextcloud, Jellyfin, and Syncthing serv
 
 TanukiGrove - Tiny server currently used as a syncthing node, storage backed by BTRFS.
 
-DoveTrail - Tiny server hosting services such as uptime-kuma and adguard-home. It also serves as another Syncthing node for redundancy. in containers. Plans: The same points for TortiseCove, but might also get more services to monitor network/service health along with being the main system to replicate the data in syncthing to backblaze.
+DoveTrail - Tiny server hosting services such as uptime-kuma and adguard-home. It also serves as another Syncthing node for redundancy. Planned to host more monitoring and health checks of the network.
 
 RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
 
 ## Usage
 ### Updating flakes
-First make sure your local nix config is set up to use the experimental feature.
+First make sure your local nix config is setup to use the experimental feature.
 In either `~/.config/nix/nix.conf` or `/etc/nix/nix.conf`:
 ```conf
 experimental-features = nix-command flakes
