@@ -28,4 +28,4 @@ or on NixOS:
 After that, you can run `nix flake update` to update the `flake.lock` file.
 
 ### Modifying secrets
-While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret
+While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret, whereas `nix run github:ryantm/agenix -- -r {secret}.age` will rekey them.
