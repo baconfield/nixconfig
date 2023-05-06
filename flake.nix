@@ -11,7 +11,6 @@
         ./server.nix
         ./services/syncthing.nix
         ./systems/DoveTrail/DoveTrail.nix
-        agenix.nixosModules.default
       ];
     };
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
@@ -19,7 +18,6 @@
       modules = [
         ./server.nix
         ./systems/RaccoonRapids/RaccoonRapids.nix
-        agenix.nixosModules.default
       ];
     };
     nixosConfigurations.TanukiGrove = nixpkgs.lib.nixosSystem {
@@ -28,7 +26,6 @@
         ./server.nix
         ./services/syncthing.nix
         ./systems/TanukiGrove/TanukiGrove.nix
-        agenix.nixosModules.default
       ];
     };
     nixosConfigurations.TortiseCove = nixpkgs.lib.nixosSystem {
