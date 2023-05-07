@@ -17,24 +17,12 @@
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
     firewall.allowedTCPPorts = [ 80 443 5600 6443 8384 22000 ];
     firewall.allowedUDPPorts = [ 22000 ];
-  };
-
-  systemd.network = {
-    enable = true;
-    netdevs."10-bond0" = {
-      netdevConfig.Kind = "bond";
-      netdevConfig.Name = "bond0";
-      bondConfig.Mode = "balance-tlb";
-    };
-    networks = {
-      "30-enp8s0f0".matchConfig.Name = "enp8s0f0";
-      "30-enp8s0f0".matchConfig.Bond = "bond0";
-      "30-enp8s0f1".matchConfig.Name = "enp8s0f1";
-      "30-enp8s0f1".matchConfig.Bond = "bond0";
-      "40-bond0" = {
-        matchConfig.Name = "bond0";
-        networkConfig.DHCP = "yes";
-      };
+    bonds.bond0 = {
+      interfaces = [
+        "enp8s0f0"
+        "enp8s0f1"
+      ];
+      driverOptions.mode = "balance-tlb";
     };
   };
 
