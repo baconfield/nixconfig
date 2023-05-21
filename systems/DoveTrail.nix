@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   networking = {
     hostName = "DoveTrail";
     firewall.allowedTCPPorts = [ 853 3000 5600 6700 8384 22000 ];

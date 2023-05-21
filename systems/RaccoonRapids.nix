@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   networking = {
     hostName = "RaccoonRapids";
     firewall.allowedTCPPorts = [ 5600 ];
