@@ -2,6 +2,8 @@
 Personal NixOS configs, you may find this useful as a reference. Currently makes use flakes and agenix, might expand into using Home Manager or NixOps.
 
 ## Systems:
+BaconField - VM dedicated to Nextcloud
+
 TortiseCove - Primary server which hosts Nextcloud, Jellyfin, and Syncthing services. Makes use of ZFS for data integrety, whereas Nginx and acme are configured around DNS-01 based challenges for the local certs.
 
 TanukiGrove - Tiny server currently used as a syncthing node, storage backed by BTRFS.
@@ -28,4 +30,4 @@ or on NixOS:
 After that, you can run `nix flake update` to update the `flake.lock` file.
 
 ### Modifying secrets
-While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret, whereas `nix run github:ryantm/agenix -- -r {secret}.age` will rekey them.
+While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret, whereas `nix run github:ryantm/agenix -- -r` will rekey them.

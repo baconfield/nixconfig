@@ -5,6 +5,16 @@
     inputs.darwin.follows = "";
   };
   outputs = { self, nixpkgs, agenix, ... }: {
+    nixosConfigurations.BaconField = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./server.nix
+        ./services/nginx.nix
+        ./services/nextcloud.nix
+        ./systems/BaconField.nix
+        ./hardware/BaconField.nix
+      ];
+    };
     nixosConfigurations.DoveTrail = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
