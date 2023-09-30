@@ -2,9 +2,11 @@
 
 {
   networking = {
-    firewall.allowedTCPPorts = [ 5600 22000];
+    firewall.allowedTCPPorts = [ 5600 8384 22000];
     firewall.allowedUDPPorts = [ 22000 ];
   };
+
+  services.syncthing.guiAddress = "10.0.1.12:8384";
 
   environment.systemPackages = with pkgs; [
     btop
