@@ -2,12 +2,12 @@
 
 {
   networking = {
-    hostName = "JellyCoast";
-    firewall.allowedTCPPorts = [ 5600 8384 22000 ];
-    firewall.allowedUDPPorts = [ 22000 ];
+    firewall.allowedTCPPorts = [ 5600 8096 8920 ];
+    firewall.allowedUDPPorts = [ ];
   };
 
-  services.syncthing.guiAddress = "10.0.1.5:8384";
+  services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
 
   environment.systemPackages = with pkgs; [
     btop
@@ -18,5 +18,5 @@
     neofetch
   ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
