@@ -5,6 +5,8 @@
     firewall.allowedTCPPorts = [ 5055 5600 7878 8112 8989 ];
     firewall.allowedUDPPorts = [ ];
   };
+
+  users.groups.multimedia = { };
   
   services.deluge = {
     enable = true;
