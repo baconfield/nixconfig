@@ -42,6 +42,7 @@
     nixosConfigurations.SalamanderGrotto = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./proxmox.nix
         ./systems/SalamanderGrotto.nix
       ];
     };
