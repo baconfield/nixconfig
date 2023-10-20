@@ -39,6 +39,12 @@
         ./systems/RaccoonRapids.nix
       ];
     };
+    nixosConfigurations.SalamanderGrotto = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./systems/SalamanderGrotto.nix
+      ];
+    };
     nixosConfigurations.TanukiGrove = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
