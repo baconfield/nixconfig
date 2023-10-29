@@ -26,11 +26,9 @@
     # jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
   environment.systemPackages = with pkgs; [
     inxi
-    blender-hip
+    blender
     bottom
     btop
     curl
@@ -38,6 +36,7 @@
     firefox
     git
     kate
+    krita
     micro
     nano
     neofetch
@@ -46,5 +45,4 @@
   ];
 
   system.stateVersion = "23.05";
-
 }
