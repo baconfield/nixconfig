@@ -43,6 +43,7 @@
     neofetch
     podman-compose
     python312
+    (python312.withPackages(ps: with ps; [poetry])
     wget
     vim
   ];
