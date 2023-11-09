@@ -42,7 +42,8 @@
     nano
     neofetch
     podman-compose
-    (python312.withPackages(ps: with ps; [poetry-core]))
+    poetry
+    python312
     wget
     vim
   ];
