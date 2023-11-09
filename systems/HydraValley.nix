@@ -35,14 +35,13 @@
     fishPlugins.tide
     firefox
     git
-    godot
+    godot4
     kate
     krita
     micro
     nano
     neofetch
     podman-compose
-    python312
     (python312.withPackages(ps: with ps; [poetry]))
     wget
     vim
