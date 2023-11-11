@@ -4,6 +4,8 @@ Personal NixOS configs, you may find this useful as a reference. Currently uses 
 
 ## Systems
 
+**HydraValley** - 7840hs mini-pc, primarily a developement environment which uses the Plasma DE
+
 **JellyCoast** - An LXC container, single purpose Jellyfin node
 
 **SalamanderGrotto** - An LXC container, single purpose Jellyseer node
@@ -47,6 +49,7 @@ Creating your own template might be the most friction-free route to getting NixO
 # Generate an LXC template to upload to a Proxmox server
 nix run github:nix-community/nixos-generators -- --format proxmox-lxc
 ```
+
 ```nix
 # Basic config
 { pkgs, modulesPath, ... }:
@@ -63,6 +66,14 @@ nix run github:nix-community/nixos-generators -- --format proxmox-lxc
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.11"
 }
 ```
+
+### `command-not-found` unable to open database
+As root:
+```sh
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+nix-channel --update
+```
+

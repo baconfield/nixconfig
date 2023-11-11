@@ -10,6 +10,8 @@
     layout = "us";
     xkbVariant = "";
   };
+  # Apply plasma theme to Firefox.
+  qt.platformTheme = "qt5ct";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
