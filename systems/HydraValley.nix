@@ -5,13 +5,12 @@
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
+    displayManager.defaultSession = "plasmawayland";
     desktopManager.plasma5.enable = true;
     # X11 keymap
     layout = "us";
     xkbVariant = "";
   };
-  # Apply plasma theme to Firefox.
-  qt.platformTheme = "qt5ct";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -50,6 +49,17 @@
     vim
     vscode
   ];
+
+  # Make Firefox use the KDE file picker.
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+  };
+
+  # Apply the KDE theme to GTK applications in Wayland
+  programs.dconf.enable = true;
 
   virtualisation.podman.enable = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
