@@ -51,11 +51,8 @@
   ];
 
   # Make Firefox use the KDE file picker.
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
+  programs.firefox.preferences = {
+    "widget.use-xdg-desktop-portal.file-picker" = 1;
   };
 
   # Apply the KDE theme to GTK applications in Wayland
