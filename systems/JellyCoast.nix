@@ -12,9 +12,13 @@
   };
 
   services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
-  services.navidrome.enable = true;
-  services.navidrome.settings.MusicFolder = "/filepit/music";
+  services.navidrome = {
+    enable = true;
+    settings = {
+      Address = "10.0.1.14";
+      MusicFolder = "/filepit/music";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
     btop
