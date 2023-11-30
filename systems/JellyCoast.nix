@@ -14,10 +14,8 @@
   services.jellyfin.enable = true;
   services.navidrome = {
     enable = true;
-    settings = {
-      Address = "10.0.1.14";
-      MusicFolder = "/filepit/music";
-    };
+    settings.Address = "10.0.1.14";
+    settings.MusicFolder = "/filepit/music";
   };
 
   environment.systemPackages = with pkgs; [
