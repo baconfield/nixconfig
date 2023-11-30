@@ -1,23 +1,29 @@
 { config, pkgs, ... }:
 
 {
-  networking = {
-    firewall.allowedTCPPorts = [ 5055 5600 7878 8112 8686 8989 ];
-    firewall.allowedUDPPorts = [ ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      5055 # Jellyseer
+      5600 # SSH
+      7878 # Radarr
+      8112 # Deluge
+      8686 # Lidarr
+      8989 # Sonarr
+    ];
   };
 
   users.groups.multimedia = { };
   
   services.deluge = {
     enable = true;
-    web.enable = true; # Port 8112
+    web.enable = true;
     group = "multimedia";
     dataDir = "/filepit/deluge";
   };
-  services.jellyseerr.enable = true; # Port 5055
-  services.lidarr = { enable = true; group = "multimedia"; }; # Port 8686
-  services.radarr = { enable = true; group = "multimedia"; }; # Port 7878
-  services.sonarr = { enable = true; group = "multimedia"; }; # Port 8989
+  services.jellyseerr.enable = true;
+  services.lidarr = { enable = true; group = "multimedia"; };
+  services.radarr = { enable = true; group = "multimedia"; };
+  services.sonarr = { enable = true; group = "multimedia"; };
 
   environment.systemPackages = with pkgs; [
     btop
