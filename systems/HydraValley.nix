@@ -45,6 +45,7 @@
     podman-compose
     poetry
     python312
+    rawtherapee
     wget
     vim
     vscode
