@@ -12,11 +12,8 @@
     ];
   };
   
-  services.deluge = {
-    enable = true;
-    web.enable = true;
-    dataDir = "/filepit/deluge";
-  };
+  services.deluge.enable = true;
+  services.deluge.web.enable = true;
   services.jellyseerr.enable = true;
   services.lidarr.enable = true;
   services.radarr.enable = true;
