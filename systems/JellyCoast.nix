@@ -11,14 +11,22 @@
     firewall.allowedUDPPorts = [ ];
   };
 
-  services.jellyfin = { enable = true; group = "multimedia"; };
+  services.jellyfin.enable = true;
   services.navidrome = {
     enable = true;
     settings.Address = "10.0.1.14";
     settings.MusicFolder = "/Filepit/Music";
   };
 
-  users.users."jellyfin".extraGroups = [ "render" ];
+  users.groups.render = {
+    gid = 104;
+    members = [ "jellyfin" ];
+  };
+
+  users.groups.multimedia.members = [
+    "navidrome"
+    "jellyfin"
+  ];
 
   hardware.opengl = {
     enable = true;
