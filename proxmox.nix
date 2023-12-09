@@ -21,7 +21,7 @@
   programs.fish.enable = true;
 
   users.groups.multimedia = { };
-
+  users.groups.render = { gid = 104 };
   users.users.tjcater = {
     isNormalUser = true;
     shell = pkgs.fish;
