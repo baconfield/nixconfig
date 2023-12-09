@@ -20,6 +20,8 @@
 
   programs.fish.enable = true;
 
+  users.groups.multimedia = { };
+
   users.users.tjcater = {
     isNormalUser = true;
     shell = pkgs.fish;
