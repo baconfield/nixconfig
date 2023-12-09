@@ -15,8 +15,10 @@
   services.navidrome = {
     enable = true;
     settings.Address = "10.0.1.14";
-    settings.MusicFolder = "/filepit/music";
+    settings.MusicFolder = "/Filepit/Music";
   };
+
+  users.users."jellyfin".extraGroups = [ "render" ];
 
   hardware.opengl = {
     enable = true;
