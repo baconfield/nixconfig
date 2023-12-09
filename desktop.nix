@@ -2,6 +2,7 @@
 
 {
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.systemd-boot.editor = false; # Hardening
     loader.systemd-boot.configurationLimit = 5;

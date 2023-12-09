@@ -1,16 +1,17 @@
 {
-  inputs.agenix = {
-    url = "github:ryantm/agenix";
-    inputs.nixpkgs.follows = "nixpkgs";
-    inputs.darwin.follows = "";
+  inputs = {
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  inputs.nixpkgs = {
-    url = github:NixOS/nixpkgs;
-  };
-  inputs.home-manager = {
-    url = "github:nix-community/home-manager";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+  
   outputs = { self, nixpkgs, agenix, home-manager, ... }: {
     nixosConfigurations.BaconField = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
