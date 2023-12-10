@@ -3,14 +3,13 @@
 {
   services.syncthing = {
     enable = true;
-    dataDir = "/Filepit";
     overrideDevices = true;
     overrideFolders = true;
-    
+
     settings.devices = {
       "DoveTrail"     = { id = "RSSLIGN-J6CDKVB-XRL3I4Z-C74QBSK-FHV4OY2-C2MZ575-VGHCQUF-NEZ55Q5"; };
       "FoxSummit"     = { id = "23UFPLY-ATX7XAE-ODKE76T-IGF76JG-P5IGCGY-MJHAXRN-MTGOZGO-NY5HJAS"; };
-      "RaccoonRapids" = { id = "333AKS2-53ZSTL5-BNIGK7R-KBAIVAP-7FFRZ2Q-L2ROK57-BT34JG5-ID7JFQ5"; };
+      "RaccoonRapids" = { id = "ZY4XWTS-UZQNJYC-L6D7YUJ-TZAIEB3-HPGL3FQ-FGSSSE2-D2GNW4Y-G37XOQY"; };
     };
     settings.folders =
       let devices = [
