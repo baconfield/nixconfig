@@ -7,6 +7,7 @@
   ];
   networking.firewall.allowedUDPPorts = [ 
     22000 # Syncthing quic sync
+    21027 # Syncthing discovery
   ];
 
   services.xserver = {
