@@ -6,7 +6,7 @@
       5001 # Dockge
       5600 # SSH
     ];
-    allowedTCPPorts = [
+    allowedUDPPorts = [
     ];
   };
 
