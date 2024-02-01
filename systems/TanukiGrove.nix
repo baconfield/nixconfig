@@ -16,6 +16,7 @@
     gping
     micro
     neofetch
+    s-tui
   ];
 
   system.stateVersion = "23.11";
