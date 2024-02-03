@@ -46,9 +46,12 @@
     bottom
     btop
     curl
+    distrobox
     fishPlugins.tide
     firefox
+    gcc
     git
+    go
     godot_4
     kate
     krita
