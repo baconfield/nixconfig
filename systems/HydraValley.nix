@@ -54,6 +54,7 @@
     go
     godot_4
     kate
+    keychain
     krita
     micro
     nano
