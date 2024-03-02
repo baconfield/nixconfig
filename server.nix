@@ -28,8 +28,7 @@
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJTJTJ8rSJhyCBbev272hIq1JyD22OF5kOheBVo6z6OC"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH/BT/Zu+Z5PnNZ4se659w6Hum4thYwHvwpiT4FMU92s"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6PkhvCO2rO0CXuszoknbAyKcxZ2ucBz2KHP6l2I3l3"
     ];
   };
 }
