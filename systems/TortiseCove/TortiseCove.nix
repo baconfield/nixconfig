@@ -33,10 +33,7 @@
       "30-enp8s0f1".matchConfig.Bond = "bond0";
       "40-bond0" = {
         matchConfig.Name = "bond0";
-        linkConfig = {
-          RequiredForOnline = "carrier";
-        };
-        networkConfig.LinkLocalAddressing = "no";
+        networkConfig.DHCP = "yes";
       };
     };
   };
