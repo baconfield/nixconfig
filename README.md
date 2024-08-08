@@ -15,8 +15,7 @@ RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
 JellyCoast - Syncthing node
 
 ## Usage
-Currently this whole repo is cloned into `/etc/nixos/`, I might add scripts or shell commands to keep it in a more sane place. Any recommendations will be happily taken.
-Alternatively, you can run `nixos-rebuild switch --flake github:baconfield/nixconfig#TanukiGrove` to build and switch to the TanukiGrove config.
+Currently, I run `nixos-rebuild switch --flake github:baconfield/nixconfig#TargetHostname` to build and switch to a specific config. Whenever I make changes to the repo, `nix-store --gc` is run to clear the outdated flake.
 
 ### Updating flakes
 First make sure your local nix config is setup to use the experimental feature.
