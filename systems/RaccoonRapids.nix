@@ -1,13 +1,15 @@
 { config, pkgs, ... }:
 
 {
-  networking = {
-    firewall.allowedTCPPorts = [
+  networking.firewall = {
+    allowedTCPPorts = [
       5600  # SSH
       8384  # Syncthing web gui
-      22000 # Syncthing syncing
+      22000 # Syncthing tcp sync
     ];
-    firewall.allowedUDPPorts = [ 22000 ];
+    allowedUDPPorts = [ 
+      22000 # Syncthing quic sync
+    ];
   };
 
   services.syncthing.guiAddress = "10.0.1.13:8384";
