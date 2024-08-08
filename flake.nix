@@ -4,7 +4,11 @@
     inputs.nixpkgs.follows = "nixpkgs";
     inputs.darwin.follows = "";
   };
-  outputs = { self, nixpkgs, agenix, ... }: {
+  inputs.home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+  outputs = { self, nixpkgs, agenix, home-manager, ... }: {
     nixosConfigurations.BaconField = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -22,6 +26,14 @@
         ./server.nix
         ./services/syncthing.nix
         ./systems/DoveTrail.nix
+      ];
+    };
+    nixosConfigurations.HydraValley = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./desktop.nix
+        ./systems/HydraValley.nix
+        ./hardware/TanukiGrove.nix
       ];
     };
     nixosConfigurations.JellyCoast = nixpkgs.lib.nixosSystem {
