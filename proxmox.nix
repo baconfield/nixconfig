@@ -17,6 +17,7 @@
   };
 
   services.tailscale.enable = true;
+  services.tailscale.interfaceName = "userspace-networking";
 
   time.timeZone = "America/Chicago";
 
