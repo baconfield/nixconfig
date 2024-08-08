@@ -10,9 +10,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kde2nix = {
+      url = "github:nix-community/kde2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   
-  outputs = { self, nixpkgs, agenix, home-manager, ... }: {
+  outputs = { self, nixpkgs, agenix, kde2nix, home-manager, ... }: {
     nixosConfigurations.BaconField = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
