@@ -30,10 +30,10 @@
 
   environment.systemPackages = with pkgs; [
     inxi
-    btm
+    bottom
     btop
     curl
-    fish
+    fishPlugins.tide
     firefox
     git
     kate
