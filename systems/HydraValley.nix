@@ -35,7 +35,7 @@
     fishPlugins.tide
     firefox
     git
-    godot4
+    godot_4
     kate
     krita
     micro
