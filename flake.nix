@@ -33,7 +33,7 @@
       modules = [
         ./desktop.nix
         ./systems/HydraValley.nix
-        ./hardware/TanukiGrove.nix
+        ./hardware/HydraValley.nix
       ];
     };
     nixosConfigurations.JellyCoast = nixpkgs.lib.nixosSystem {
