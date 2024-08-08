@@ -62,7 +62,7 @@
       enable = true;
       role = "server";
       extraFlags = toString [
-        "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
+        "--write-kubeconfig-mode --container-runtime-endpoint unix:///run/containerd/containerd.sock"
       ];
     };
     openssh = {
