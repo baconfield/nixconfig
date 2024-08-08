@@ -2,6 +2,13 @@
 
 {
   networking.hostName = "HydraValley";
+  networking.firewall.allowedTCPPorts = [
+    22000 # Syncthing tcp sync
+  ];
+  networking.firewall.allowedUDPPorts = [ 
+    22000 # Syncthing quic sync
+  ];
+
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
