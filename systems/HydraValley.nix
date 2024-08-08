@@ -59,6 +59,7 @@
   programs.dconf.enable = true;
 
   virtualisation.podman.enable = true;
+  virtualisation.podman.dockerCompat = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
   system.stateVersion = "23.05";
