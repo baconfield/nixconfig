@@ -11,6 +11,8 @@ DoveTrail - Tiny server hosting services such as uptime-kuma and adguard-home. I
 RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
 
 ## Usage
+Currently this whole repo is cloned into `/etc/nixos/`, I might add scripts or shell commands to keep it in a more sane place. Any recommendations will be happily taken.
+
 ### Updating flakes
 First make sure your local nix config is setup to use the experimental feature.
 In either `~/.config/nix/nix.conf` or `/etc/nix/nix.conf`:
