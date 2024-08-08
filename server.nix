@@ -19,9 +19,10 @@
     ports = [ 5600 ];
   };
 
-  system = {
-    autoUpgrade.enable = true;
-    autoUpgrade.allowReboot = true; # Need to look into upgrade notifications
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true; # Need to look into upgrade notifications
+    flake = "github:baconfield/nixconfig";
   };
 
   time.timeZone = "America/Central";
