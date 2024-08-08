@@ -18,8 +18,8 @@
     settings.MusicFolder = "/Filepit/Music";
   };
 
-  users.groups.render = {
-    gid = pkgs.lib.mkForce 104;
+  users.groups.rendering = {
+    gid = 104;
     members = [ "jellyfin" ];
   };
 
