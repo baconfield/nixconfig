@@ -2,12 +2,18 @@
 
 {
   networking = {
-    firewall.allowedTCPPorts = [ 5600 8096 8920 ];
+    firewall.allowedTCPPorts = [
+      5600 # SSH
+      4533 # Navidrome
+      8096 # Jellyfin http
+      8920 # Jellyfin https
+    ];
     firewall.allowedUDPPorts = [ ];
   };
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
+  services.navidrome.enable = true;
 
   environment.systemPackages = with pkgs; [
     btop
