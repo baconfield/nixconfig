@@ -12,7 +12,7 @@
     group = "multimedia";
     dataDir = "/filepit/deluge";
   };
-  services.jellyseerr = { enable = true; group = "multimedia"; }; # Port 5055
+  services.jellyseer.enable = true; # Port 5055
   services.radarr = { enable = true; group = "multimedia"; }; # Port 7878
   services.sonarr = { enable = true; group = "multimedia"; }; # Port 8989
 
