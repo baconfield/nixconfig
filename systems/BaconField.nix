@@ -19,7 +19,7 @@
     };
 
     nextcloud = {
-      hostName = "cloud.tortisecove.xyz";
+      hostName = "cloud.baconfield.xyz";
       config.adminpassFile = config.age.secrets.nextcloudPass.path;
     };
   };
