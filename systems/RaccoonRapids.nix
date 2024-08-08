@@ -13,6 +13,7 @@
   };
 
   services.syncthing.guiAddress = "10.0.1.13:8384";
+  services.syncthing.group = "multimedia";
 
   environment.systemPackages = with pkgs; [
     btop

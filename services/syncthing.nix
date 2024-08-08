@@ -3,7 +3,7 @@
 {
   services.syncthing = {
     enable = true;
-    dataDir = "/filepit";
+    dataDir = "/Filepit";
     overrideDevices = true;
     overrideFolders = true;
     
@@ -21,22 +21,27 @@
       in {
         "Documents" = {
           id = "oc4g6-xbnpq";
-          path = "/filepit/documents";
+          path = "/Filepit/Documents";
           devices = devices;
         };
         "Music" = {
           id = "yinnq-rva4h";
-          path = "/filepit/music";
+          path = "/Filepit/Music";
           devices = devices;
         };
         "Pictures" = {
           id = "xcrth-tep2j";
-          path = "/filepit/pictures";
+          path = "/Filepit/Pictures";
+          devices = devices;
+        };
+        "Music Videos" = {
+          id = "tm4hc-ge4yd";
+          path = "/Filepit/Videos";
           devices = devices;
         };
         "Videos" = {
           id = "5cwgs-v3tih";
-          path = "/filepit/videos";
+          path = "/Filepit/Videos";
           devices = devices;
         };
       };
