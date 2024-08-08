@@ -9,7 +9,7 @@
   };
 
   fonts.packages = with pkgs; [
-    nerdfonts;
+    nerdfonts
   ];
 
   # Locale settings
