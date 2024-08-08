@@ -43,6 +43,7 @@
     micro
     nano
     neofetch
+    ollama
     podman-compose
     poetry
     python312
