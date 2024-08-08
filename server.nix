@@ -14,8 +14,8 @@
 
   services.openssh = {
     enable = true;
-    settings.permitRootLogin = "no";
-    settings.passwordAuthentication = false;
+    settings.PermitRootLogin = "no";
+    settings.PasswordAuthentication = false;
     ports = [ 5600 ];
   };
 
