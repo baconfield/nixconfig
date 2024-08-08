@@ -9,7 +9,7 @@
   services.deluge = {
     enable = true;
     web.enable = true; # Port 8112
-    datadir = "/filepit/deluge";
+    dataDir = "/filepit/deluge";
   };
   services.jellyseer.enable = true; # Port 5055
   services.radarr.enable = true; # Port 7878
