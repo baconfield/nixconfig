@@ -35,7 +35,7 @@
         };
         "Music Videos" = {
           id = "tm4hc-ge4yd";
-          path = "/Filepit/Videos";
+          path = "/Filepit/Music\ Videos";
           devices = devices;
         };
         "Videos" = {
