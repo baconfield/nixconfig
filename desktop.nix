@@ -8,6 +8,10 @@
     loader.efi.canTouchEfiVariables = true;
   };
 
+  fonts.packages = with pkgs; [
+    nerdfonts;
+  ];
+
   # Locale settings
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {

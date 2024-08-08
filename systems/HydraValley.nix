@@ -40,9 +40,14 @@
     micro
     nano
     neofetch
+    podman-compose
+    (python312.withPackages(ps: with ps; [poetry])
     wget
     vim
   ];
+
+  virtualisation.podman.enable = true;
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
   system.stateVersion = "23.05";
 }
