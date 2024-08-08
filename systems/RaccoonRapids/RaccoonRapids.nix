@@ -6,10 +6,6 @@
       ./hardware-configuration.nix
     ];
 
-  age.secrets = {
-    publicKeys.file = /root/secrets/publicKeys.age;
-  };
-
   networking = {
     hostName = "RaccoonRapids";
     firewall.allowedTCPPorts = [ 5600 ];
