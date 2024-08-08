@@ -13,6 +13,7 @@
         ./services/nextcloud.nix
         ./systems/BaconField.nix
         ./hardware/BaconField.nix
+        agenix.nixosModules.default
       ];
     };
     nixosConfigurations.DoveTrail = nixpkgs.lib.nixosSystem {
