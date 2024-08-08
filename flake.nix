@@ -10,14 +10,16 @@
       modules = [
         ./server.nix
         ./services/syncthing.nix
-        ./systems/DoveTrail/DoveTrail.nix
+        ./systems/DoveTrail.nix
+        ./hardware/DoveTrail.nix
       ];
     };
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./server.nix
-        ./systems/RaccoonRapids/RaccoonRapids.nix
+        ./systems/RaccoonRapids.nix
+        ./hardware/RaccoonRapids.nix
       ];
     };
     nixosConfigurations.TanukiGrove = nixpkgs.lib.nixosSystem {
@@ -25,7 +27,8 @@
       modules = [
         ./server.nix
         ./services/syncthing.nix
-        ./systems/TanukiGrove/TanukiGrove.nix
+        ./systems/TanukiGrove.nix
+        ./hardware/TanukiGrove.nix
       ];
     };
     nixosConfigurations.TortiseCove = nixpkgs.lib.nixosSystem {
@@ -35,7 +38,8 @@
         ./services/nextcloud.nix
         ./services/nginx.nix
         ./services/syncthing.nix
-        ./systems/TortiseCove/TortiseCove.nix
+        ./systems/TortiseCove.nix
+        ./hardware/TortiseCove.nix
         agenix.nixosModules.default
       ];
     };
