@@ -1,7 +1,7 @@
 # secrets/secrets.nix
 
 let
-    BaconField = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHDQZttY7AVs+/IfxVJG3XI6tH/AXb44yyYjM1xkgKqv";
+    BaconField = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMluvcE2E0KZNFjBPidNOE+GAFsyjGWeBeO7tBYAnkWT";
     Foxsummit = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJTJTJ8rSJhyCBbev272hIq1JyD22OF5kOheBVo6z6OC";
     TortiseCove = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILC7uVOlqHKRxQiGFwvXWoVGfOkjKdXyFAvY3rWtnh/h";
     DoveTrail = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQysvK01pWVVxeYJ0e/TCBmJ9rotds/GhzLLfsPChfK";
