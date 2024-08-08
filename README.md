@@ -3,6 +3,8 @@ Personal NixOS configs, you may find this useful as a reference. Currently uses 
 
 
 ## Systems
+
+**JellyCoast** - An LXC container, single purpose Jellyfin node
 **RaccoonRapids** - An LXC container, single purpose Syncthing node
 
 #### Unused configs

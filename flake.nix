@@ -27,10 +27,8 @@
     nixosConfigurations.JellyCoast = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./server.nix
-        ./services/syncthing.nix
+        ./proxmox.nix
         ./systems/JellyCoast.nix
-        ./hardware/JellyCoast.nix
       ];
     };
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
