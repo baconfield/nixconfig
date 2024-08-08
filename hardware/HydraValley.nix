@@ -31,4 +31,9 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.bluetooth.enable = true;
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.opengl.driSupport = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
 }
