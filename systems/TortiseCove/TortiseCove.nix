@@ -18,38 +18,20 @@
     firewall.allowedUDPPorts = [ 22000 ];
   };
 
-  age.secrets = {
-    credentials.file = "/etc/nixos/secrets/credentials.age";
-    nextcloudPass = {
-      file = "/etc/nixos/secrets/nextcloudPass.age";
-      owner = "nextcloud";
-      group = "nextcloud";
-    };
+  age.secrets.credentials.file = "/etc/nixos/secrets/credentials.age";
+  age.secrets.nextcloudPass = {
+    file = "/etc/nixos/secrets/nextcloudPass.age";
+    owner = "nextcloud";
+    group = "nextcloud";
   };
 
-  security.acme= {
+  security.acme = {
     defaults = {
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.credentials.path;
     };
     certs."tortisecove.xyz" = {
       domain  = "*.tortisecove.xyz";
-    };
-  };
-
-  services.nginx.virtualHosts = {
-    "jellyfin.tortisecove.xyz" = {
-      enableACME = true;
-      acmeRoot = null;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8096";
-      };
-    };
-    "cloud.tortisecove.xyz" = {
-      enableACME = true;
-      acmeRoot = null;
-      forceSSL = true;
     };
   };
 
@@ -67,24 +49,41 @@
     };
   };
 
-  services.nextcloud = {
-    hostName = "cloud.tortisecove.xyz";
-    config.adminpassFile = config.age.secrets.nextcloudPass.path;
-  };
+  services = {
+    nginx.virtualHosts."jellyfin.tortisecove.xyz" = {
+      enableACME = true;
+      acmeRoot = null;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8096";
+      };
+    };
 
-  services.syncthing = { # Uses ports 8384 and 22000
-    user = "tjcater";
-    configDir = "/home/tjcater/.config/syncthing";
-    guiAddress = "10.0.1.100:8384";
-  };
+    nginx.virtualHosts."cloud.tortisecove.xyz" = {
+      enableACME = true;
+      acmeRoot = null;
+      forceSSL = true;
+    };
 
-  services.udev.extraRules = ''
-      ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
-    '';
+    nextcloud = {
+      hostName = "cloud.tortisecove.xyz";
+      config.adminpassFile = config.age.secrets.nextcloudPass.path;
+    };
 
-  services.zfs = {
-    autoScrub.enable = true;
-    trim.enable = true;
+    syncthing = { # Uses ports 8384 and 22000
+      user = "tjcater";
+      configDir = "/home/tjcater/.config/syncthing";
+      guiAddress = "10.0.1.100:8384";
+    };
+
+    udev.extraRules = ''
+        ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
+      '';
+
+    zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
