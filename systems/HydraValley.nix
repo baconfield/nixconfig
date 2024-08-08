@@ -72,7 +72,7 @@
 
   # Apply the KDE theme to GTK applications in Wayland
   programs.dconf.enable = true;
-
+  xdg.settings.portal = true; 
   virtualisation.podman.enable = true;
   virtualisation.podman.dockerCompat = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
