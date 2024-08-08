@@ -3,7 +3,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud26;
+      package = pkgs.nextcloud27;
 
       https = true;
       config = {
@@ -12,19 +12,6 @@
         dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
         dbname = "nextcloud";
         adminuser = "root";
-      };
-      caching.redis = true;
-      caching.apcu = false;
-      extraOptions = {
-        redis = {
-          host = "/run/redis-nextcloud/redis.sock";
-          port = 0;
-        };
-        memcache = {
-          local = "\\OC\\Memcache\\Redis";
-          distributed = "\\OC\\Memcache\\Redis";
-          locking = "\\OC\\Memcache\\Redis";
-        };
       };
     };
 
@@ -36,12 +23,6 @@
         ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
       }
       ];
-    };
-
-    redis.servers.nextcloud = {
-      enable = true;
-      user = "nextcloud";
-      port = 0;
     };
   };
 
