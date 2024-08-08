@@ -59,6 +59,7 @@
     poetry
     python312
     rawtherapee
+    s-tui
     wget
     vim
     vscode

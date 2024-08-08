@@ -25,6 +25,7 @@
     micro
     neofetch
     neovim
+    s-tui
   ];
 
   system.stateVersion = "23.11";
