@@ -9,6 +9,7 @@
     settings.devices = {
       "DoveTrail"     = { id = "RSSLIGN-J6CDKVB-XRL3I4Z-C74QBSK-FHV4OY2-C2MZ575-VGHCQUF-NEZ55Q5"; };
       "FoxSummit"     = { id = "23UFPLY-ATX7XAE-ODKE76T-IGF76JG-P5IGCGY-MJHAXRN-MTGOZGO-NY5HJAS"; };
+      "HydraValley"   = { id = "NQJ2CCZ-AAOQGNQ-4FRIROR-HHNXKKX-46KQCT3-NKVSZTR-QJCSVLV-WQLSIAC"; };
       "RaccoonRapids" = { id = "7ZHZ2F2-E4T3VPW-KQROBZT-MTPX2O6-KNXOYFJ-NZYQHHV-JVZNLVA-LZQBFQY"; };
     };
     settings.folders =
