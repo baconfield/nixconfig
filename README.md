@@ -1,9 +1,29 @@
 # NixOS Configurations
-Personal NixOS configs, a learning project that might be useful as a reference. Currently testing out secret management with agenix, and planning to try out other projects like Home Manager and NixOps. Also planning to learn how things might be properly isolated and further hardened.
+Personal NixOS configs, you may find this useful as a reference. Currently makes use flakes and agenix, might expand into using Home Manager or NixOps.
 
 ## Systems:
-TortiseCove - A server primarily focused on file syncing and video streaming. Syncthing ran as user, and the backing store of content for a containerized Jellyfin service. Also uses ZFS. Plans: Check out what the consequences of moving syncthing into a container are, figure out network isolation, and configure wildcard certs and pass them to containers.
+TortiseCove - Primary server which hosts Nextcloud, Jellyfin, and Syncthing services. Makes use of ZFS for data integrety, whereas Nginx and acme are configured around DNS-01 based challenges for the local certs.
 
-DoveTrail - Planned to be an extra node for Syncthing, however it has some services such as uptime-kuma and adguard-home in containers. Plans: The same points for TortiseCove, but might also get more services to monitor network/service health along with being the main system to replicate the data in syncthing to backblaze.
+TanukiGrove - Tiny server currently used as a syncthing node, storage backed by BTRFS.
 
-RaccoonRapids - Staging environment for large changes, currently testing agenix configs, but in the future Home Manager/NixOps
+DoveTrail - Tiny server hosting services such as uptime-kuma and adguard-home. It also serves as another Syncthing node for redundancy. in containers. Plans: The same points for TortiseCove, but might also get more services to monitor network/service health along with being the main system to replicate the data in syncthing to backblaze.
+
+RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
+
+## Usage
+### Updating flakes
+First make sure your local nix config is set up to use the experimental feature.
+In either `~/.config/nix/nix.conf` or `/etc/nix/nix.conf`:
+```conf
+experimental-features = nix-command flakes
+```
+or on NixOS:
+```Nix
+{ pkgs, ... }: {
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+}
+```
+After that, you can run `nix flake update` to update the `flake.lock` file.
+
+### Modifying secrets
+While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret
