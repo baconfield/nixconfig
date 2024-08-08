@@ -14,8 +14,8 @@
   networking = {
     hostName = "TortiseCove";
     hostId = "f55e9dd6"; # Just needs to be unique from other machines on the network
-    firewall.allowedTCPPorts = [ 80 443 5600 6443 8096 8384 8920 22000 ];
-    firewall.allowedUDPPorts = [ 1900 7359 22000 ];
+    firewall.allowedTCPPorts = [ 80 443 5600 6443 8384 22000 ];
+    firewall.allowedUDPPorts = [ 22000 ];
   };
 
   containers.jellyfin = { # Uses ports 1900, 7359, 8096, and 8920
