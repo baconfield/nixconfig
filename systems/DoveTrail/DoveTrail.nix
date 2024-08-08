@@ -35,23 +35,7 @@
     };
   };
 
-  services.syncthing = { # Uses ports 8384 and 22000
-    guiAddress = "10.0.1.20:8384";
-    devices = {
-      "BaconField" = { id = "[REDACTED]"; };
-      "FoxSummit" = { id = "[REDACTED]"; };
-      "TanukiGrove" = { id = "[REDACTED]"; };
-      "TortiseCove" = { id = "[REDACTED]"; };
-    };
-    folders =
-      let devices = [ "BaconField" "FoxSummit" "TanukiGrove" "TortiseCove" ]
-      in {
-        "Documents".devices = devices;
-        "Music".devices = devices;
-        "Pictures".devices = devices;
-        "Videos".devices = devices;
-      };
-  };
+  services.syncthing.guiAddress = "10.0.1.20:8384";
 
   systemd.services.container@uptime-kuma.Unit.After = "network.target";
 

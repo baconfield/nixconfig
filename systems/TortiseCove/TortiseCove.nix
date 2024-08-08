@@ -63,20 +63,6 @@
     user = "tjcater";
     configDir = "/home/tjcater/.config/syncthing";
     guiAddress = "10.0.1.100:8384";
-    devices = {
-      "BaconField" = { id = "[REDACTED]"; };
-      "DoveTrail" = { id = "[REDACTED]"; };
-      "FoxSummit" = { id = "[REDACTED]"; };
-      "TanukiGrove" = { id = "[REDACTED]"; };
-    };
-    folders =
-      let devices = [ "BaconField" "DoveTrail" "FoxSummit" "TanukiGrove" ]
-      in {
-        "Documents".devices = devices;
-        "Music".devices = devices;
-        "Pictures".devices = devices;
-        "Videos".devices = devices;
-      };
   };
 
   services.udev.extraRules = ''
