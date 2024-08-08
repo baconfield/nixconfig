@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  networking.hostName = "HydraValley";
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
@@ -27,9 +28,9 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
   environment.systemPackages = with pkgs; [
     inxi
+    blender-hip
     bottom
     btop
     curl
