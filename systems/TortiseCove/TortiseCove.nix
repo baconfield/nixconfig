@@ -32,33 +32,6 @@
     };
   };
 
-  virtualisation.containerd = {
-    enable = true;
-    settings =
-      let
-        fullCNIPlugins = pkgs.buildEnv {
-          name = "full-cni";
-          paths = with pkgs;[
-            cni-plugins
-            cni-plugin-flannel
-          ];
-        };
-      in {
-        plugins."io.containerd.grpc.v1.cri".cni = {
-          bin_dir = "${fullCNIPlugins}/bin";
-          conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d/";
-        };
-      };
-  };
-
-  services.k3s = { # Uses port 6443
-    enable = true;
-    role = "server";
-    extraFlags = toString [
-      "--write-kubeconfig-mode --container-runtime-endpoint unix:///run/containerd/containerd.sock"
-    ];
-  };
-
   services.syncthing = { # Uses ports 8384 and 22000
     user = "tjcater";
     configDir = "/home/tjcater/.config/syncthing";
@@ -77,7 +50,6 @@
   environment.systemPackages = with pkgs; [
     btop
     git
-    k3s
     micro
     neofetch
   ];
