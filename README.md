@@ -4,7 +4,9 @@ Personal NixOS configs, you may find this useful as a reference. Currently uses 
 
 ## Systems
 
-**HydraValley** - 7840hs mini-pc, primarily a developement environment which uses the Plasma DE
+**HydraValley** - 7840hs mini-pc, docker host
+
+**HydraValley.bak** - 7840hs mini-pc, primarily a developement environment which uses the Plasma DE
 
 **JellyCoast** - An LXC container, single purpose Jellyfin node
 

@@ -39,8 +39,7 @@
     nixosConfigurations.HydraValley = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./desktop.nix
-        ./services/syncthing.nix
+        ./server.nix
         ./systems/HydraValley.nix
         ./hardware/HydraValley.nix
       ];
