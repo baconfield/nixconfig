@@ -19,7 +19,7 @@
   };
 
   users.groups.render = {
-    gid = 104;
+    gid = pkgs.lib.mkForce 104;
     members = [ "jellyfin" ];
   };
 
