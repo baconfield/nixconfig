@@ -23,6 +23,9 @@
     enable = true;
     allowReboot = true; # Need to look into upgrade notifications
     flake = "github:baconfield/nixconfig";
+    flags = [
+      "--update-input" "nixpkgs"
+    ];
   };
 
   time.timeZone = "America/Central";
