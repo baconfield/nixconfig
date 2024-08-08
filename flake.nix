@@ -52,6 +52,13 @@
         ./systems/JellyCoast.nix
       ];
     };
+    nixosConfigurations.OrcaStrait = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./proxmox.nix
+        ./systems/OrcaStrait.nix
+      ];
+    };
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
