@@ -11,8 +11,6 @@
       8989 # Sonarr
     ];
   };
-
-  users.groups.multimedia = { };
   
   services.deluge = {
     enable = true;
