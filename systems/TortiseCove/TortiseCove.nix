@@ -18,20 +18,6 @@
     firewall.allowedUDPPorts = [ 22000 ];
   };
 
-  containers.jellyfin = { # Uses ports 1900, 7359, 8096, and 8920
-    autoStart = true;
-    bindMounts = {
-      "/filepit/music" = { hostPath = "/filepit/music"; };
-      "/filepit/videos" = { hostPath = "/filepit/videos"; };
-    };
-    config = { config, pkgs, ... }: {
-      services.jellyfin.enable = true;
-      services.jellyfin.openFirewall = true;
-      networking.firewall.enable = true;
-      system.stateVersion = "22.05";
-    };
-  };
-
   age.secrets = {
     credentials.file = "/etc/nixos/secrets/credentials.age";
   };
@@ -46,12 +32,69 @@
     };
   };
 
-  services.nginx.virtualHosts."jellyfin.tortisecove.xyz" = {
-    enableACME = true;
-    acmeRoot = null;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:8096";
+  services.nginx.virtualHosts = {
+    "jellyfin.tortisecove.xyz" = {
+      enableACME = true;
+      acmeRoot = null;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:8096";
+      };
+    };
+    "cloud.tortisecove.xyz" = {
+      enableACME = true;
+      acmeRoot = null;
+      forceSSL = true;
+    };
+  };
+
+  containers.jellyfin = { # Uses ports 1900, 7359, 8096, and 8920
+    autoStart = true;
+    bindMounts = {
+      "/filepit/music" = { hostPath = "/filepit/music"; };
+      "/filepit/videos" = { hostPath = "/filepit/videos"; };
+    };
+    config = { config, pkgs, ... }: {
+      services.jellyfin.enable = true;
+      services.jellyfin.openFirewall = true;
+      networking.firewall.enable = true;
+      system.stateVersion = "22.05";
+    };
+  };
+
+  containers.nextcloud = {
+    autoStart = true;
+    bindMounts."/filepit/nextcloud" = {
+      hostPath = "/filepit/nextcloud";
+      isReadOnly = false;
+    };
+    config = { config, pkgs, ... }: {
+      services.nextcloud = {
+        enable = true;
+        package = pkgs.nextcloud26;
+        hostName = "cloud.tortisecove.xyz";
+        https = true;
+        caching.redis = true;
+        caching.apcu = false;
+        extraOptions = {
+          redis = {
+            host = "/run/redis-nextcloud/redis.sock";
+            port = 0;
+          };
+          memcache = {
+            local = "\\OC\\Memcache\\Redis";
+            distributed = "\\OC\\Memcache\\Redis";
+            locking = "\\OC\\Memcache\\Redis";
+          };
+        };
+      };
+      services.redis.servers.nextcloud = {
+        enable = true;
+        user = "nextcloud";
+        port = 0;
+      };
+      networking.firewall.enable = true;
+      system.stateVersion = "22.11";
     };
   };
 
