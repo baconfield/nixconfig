@@ -23,6 +23,7 @@
         "enp8s0f1"
       ];
       driverOptions.mode = "balance-tlb";
+      driverOptions.miimon = 100;
     };
   };
 
