@@ -20,7 +20,6 @@
 
   age.secrets = {
     credentials.file = "/etc/nixos/secrets/credentials.age";
-    nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
   };
 
   security.acme= {
@@ -70,6 +69,7 @@
       isReadOnly = false;
     };
     config = { config, pkgs, ... }: {
+      age.secrets.nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
       services.nextcloud = {
         enable = true;
         package = pkgs.nextcloud26;
