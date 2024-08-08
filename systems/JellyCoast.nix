@@ -11,7 +11,7 @@
     firewall.allowedUDPPorts = [ ];
   };
 
-  services.jellyfin.enable = true;
+  services.jellyfin = { enable = true; group = "multimedia"; };
   services.navidrome = {
     enable = true;
     settings.Address = "10.0.1.14";
@@ -22,6 +22,7 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel # LIBVA_DRIVER_NAME=i965
     ];
   };
 
