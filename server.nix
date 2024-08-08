@@ -10,14 +10,14 @@
 
   networking.firewall.enable = true;
 
+  nix.settings.experimental-features = "nix-command flakes";
+
   services.openssh = {
     enable = true;
     permitRootLogin = "no";
     passwordAuthentication = false;
     ports = [ 5600 ];
   };
-
-  nix.settings.experimental-features = "nix-command flakes";
 
   system = {
     autoUpgrade.enable = true;
