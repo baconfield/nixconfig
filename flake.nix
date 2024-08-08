@@ -4,6 +4,9 @@
     inputs.nixpkgs.follows = "nixpkgs";
     inputs.darwin.follows = "";
   };
+  inputs.nixpkgs = {
+    url = github:NixOS/nixpkgs;
+  };
   inputs.home-manager = {
     url = "github:nix-community/home-manager";
     inputs.nixpkgs.follows = "nixpkgs";
