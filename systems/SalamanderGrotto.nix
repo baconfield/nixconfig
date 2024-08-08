@@ -15,13 +15,19 @@
   services.deluge = {
     enable = true;
     web.enable = true;
-    group = "multimedia";
     dataDir = "/filepit/deluge";
   };
   services.jellyseerr.enable = true;
-  services.lidarr = { enable = true; group = "multimedia"; };
-  services.radarr = { enable = true; group = "multimedia"; };
-  services.sonarr = { enable = true; group = "multimedia"; };
+  services.lidarr.enable = true;
+  services.radarr.enable = true;
+  services.sonarr.enable = true;
+
+  users.groups.multimedia.members = [
+    "deluge"
+    "lidarr"
+    "radarr"
+    "sonarr"
+  ];
 
   environment.systemPackages = with pkgs; [
     btop
