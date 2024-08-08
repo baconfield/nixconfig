@@ -2,18 +2,19 @@
 Personal NixOS configs, you may find this useful as a reference. Currently makes use flakes and agenix, might expand into using Home Manager or NixOps.
 
 ## Systems:
-BaconField - VM dedicated to Nextcloud
+BaconField - Nextcloud VM
 
-TortiseCove - Primary server which hosts Nextcloud, Jellyfin, and Syncthing services. Makes use of ZFS for data integrety, whereas Nginx and acme are configured around DNS-01 based challenges for the local certs.
+TortiseCove - Config no longer in use, primary role is to host Nextcloud, Jellyfin, and Syncthing services. Makes use of ZFS for data integrety, whereas Nginx and acme are configured around DNS-01 based challenges for the local certs.
 
-TanukiGrove - Tiny server currently used as a syncthing node, storage backed by BTRFS.
+TanukiGrove - Config no longer in use, primary role of being a syncthing node.
 
-DoveTrail - Tiny server hosting services such as uptime-kuma and adguard-home. It also serves as another Syncthing node for redundancy. Planned to host more monitoring and health checks of the network.
+DoveTrail - Config no longer in use, primary role is to host services such as uptime-kuma, adguard-home, and Syncthing.
 
 RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
 
 ## Usage
 Currently this whole repo is cloned into `/etc/nixos/`, I might add scripts or shell commands to keep it in a more sane place. Any recommendations will be happily taken.
+Alternatively, you can run `nixos-rebuild switch --flake github:baconfield/nixconfig#TanukiGrove` to build and switch to the TanukiGrove config.
 
 ### Updating flakes
 First make sure your local nix config is setup to use the experimental feature.
