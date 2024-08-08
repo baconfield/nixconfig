@@ -14,7 +14,7 @@
   };
   services.jellyseerr.enable = { enable = true; group = "multimedia"; }; # Port 5055
   services.radarr.enable = { enable = true; group = "multimedia"; }; # Port 7878
-  services.sonarr.enable = { enable = true; group = "multimedia"; };; # Port 8989
+  services.sonarr.enable = { enable = true; group = "multimedia"; }; # Port 8989
 
   environment.systemPackages = with pkgs; [
     btop
