@@ -15,6 +15,10 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.syncthing = { # Uses ports 8384 and 22000
+    user = "tjcater";
+    configDir = "/home/tjcater/.config/syncthing";
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -43,7 +47,6 @@
     micro
     nano
     neofetch
-    ollama
     podman-compose
     poetry
     python312
@@ -51,6 +54,7 @@
     wget
     vim
     vscode
+    yt-dlp
   ];
 
   # Make Firefox use the KDE file picker.

@@ -40,6 +40,7 @@
       system = "x86_64-linux";
       modules = [
         ./desktop.nix
+        ./services/syncthing.nix
         ./systems/HydraValley.nix
         ./hardware/HydraValley.nix
       ];
