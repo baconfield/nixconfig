@@ -20,6 +20,7 @@
 
   age.secrets = {
     credentials.file = "/etc/nixos/secrets/credentials.age";
+    nextcloudPass.file = "/etc/nixos/secrets/nextcloudPass.age";
   };
 
   security.acme= {
@@ -74,6 +75,14 @@
         package = pkgs.nextcloud26;
         hostName = "cloud.tortisecove.xyz";
         https = true;
+        config = {
+          dbtype = "pgsql";
+          dbuser = "nextcloud";
+          dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
+          dbname = "nextcloud";
+          adminpassFile = config.age.secrets.nextcloudPass.path;
+          adminuser = "root";
+        };
         caching.redis = true;
         caching.apcu = false;
         extraOptions = {
@@ -88,12 +97,26 @@
           };
         };
       };
+      services.postgresql = {
+        enable = true;
+        ensureDatabases = [ "nextcloud" ];
+        ensureUsers = [
+        { name = "nextcloud";
+          ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+        }
+        ];
+      };
       services.redis.servers.nextcloud = {
         enable = true;
         user = "nextcloud";
         port = 0;
       };
+      systemd.services."nextcloud-setup" = {
+        requires = ["postgresql.service"];
+        after = ["postgresql.service"];
+      };
       networking.firewall.enable = true;
+      networking.firewall.allowedTCPPorts = [ 80 443 ];
       system.stateVersion = "22.11";
     };
   };

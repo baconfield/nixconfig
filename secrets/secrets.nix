@@ -9,4 +9,5 @@ let
 in
 {
     "credentials.age".publicKeys = [TortiseCove Foxsummit];
+    "nextcloudPass.age".publicKeys = [TortiseCove Foxsummit];
 } # nix run github:ryantm/agenix -- -e credentials.age
