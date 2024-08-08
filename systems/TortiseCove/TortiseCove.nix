@@ -22,7 +22,7 @@
         "enp8s0f0"
         "enp8s0f1"
       ];
-      driverOptions.mode = "balance-tlb";
+      driverOptions.mode = "active-backup";
       driverOptions.miimon = "100";
     };
   };
