@@ -24,7 +24,7 @@
     netdevs."10-bond0" = {
       netdevConfig.Kind = "bond";
       netdevConfig.Name = "bond0";
-      bondConfig.Mode = "balance-alb";
+      bondConfig.Mode = "balance-tlb";
     };
     networks = {
       "30-enp8s0f0".matchConfig.Name = "enp8s0f0";
