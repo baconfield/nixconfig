@@ -18,6 +18,13 @@
     settings.MusicFolder = "/filepit/music";
   };
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     btop
     fishPlugins.tide

@@ -3,7 +3,7 @@
 {
   networking.firewall = {
     allowedTCPPorts = [
-      5055 # Jellyseer
+      5055 # Jellyseerr
       5600 # SSH
       7878 # Radarr
       8112 # Deluge
