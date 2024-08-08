@@ -12,6 +12,8 @@ DoveTrail - Config no longer in use, primary role is to host services such as up
 
 RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
 
+JellyCoast - Syncthing node
+
 ## Usage
 Currently this whole repo is cloned into `/etc/nixos/`, I might add scripts or shell commands to keep it in a more sane place. Any recommendations will be happily taken.
 Alternatively, you can run `nixos-rebuild switch --flake github:baconfield/nixconfig#TanukiGrove` to build and switch to the TanukiGrove config.
