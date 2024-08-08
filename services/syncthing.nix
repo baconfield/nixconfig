@@ -6,11 +6,12 @@
     dataDir = "/filepit";
     overrideDevices = true;
     overrideFolders = true;
-    devices = {
+    
+    settings.devices = {
       "DoveTrail"   = { id = "RSSLIGN-J6CDKVB-XRL3I4Z-C74QBSK-FHV4OY2-C2MZ575-VGHCQUF-NEZ55Q5"; };
       "FoxSummit"   = { id = "23UFPLY-ATX7XAE-ODKE76T-IGF76JG-P5IGCGY-MJHAXRN-MTGOZGO-NY5HJAS"; };
     };
-    folders =
+    settings.folders =
       let devices = [
         "DoveTrail"
         "FoxSummit"
