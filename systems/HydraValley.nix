@@ -46,6 +46,7 @@
     python312
     wget
     vim
+    vscode
   ];
 
   virtualisation.podman.enable = true;
