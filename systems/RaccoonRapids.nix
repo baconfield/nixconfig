@@ -6,7 +6,7 @@
     firewall.allowedUDPPorts = [ 22000 ];
   };
 
-  services.syncthing.guiAddress = "10.0.1.12:8384";
+  services.syncthing.guiAddress = "10.0.1.13:8384";
 
   environment.systemPackages = with pkgs; [
     btop
