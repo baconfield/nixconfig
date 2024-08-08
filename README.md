@@ -6,6 +6,8 @@ Personal NixOS configs, you may find this useful as a reference. Currently uses 
 
 **JellyCoast** - An LXC container, single purpose Jellyfin node
 
+**SalamanderGrotto** - An LXC container, single purpose Jellyseer node
+
 **RaccoonRapids** - An LXC container, single purpose Syncthing node
 
 #### Unused configs
