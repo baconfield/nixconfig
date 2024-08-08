@@ -14,6 +14,7 @@
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
   services.navidrome.enable = true;
+  services.navidrome.settings.MusicFolder = "/filepit/music";
 
   environment.systemPackages = with pkgs; [
     btop
