@@ -2,7 +2,11 @@
 
 {
   networking = {
-    firewall.allowedTCPPorts = [ 5600 8384 22000];
+    firewall.allowedTCPPorts = [
+      5600  # SSH
+      8384  # Syncthing web gui
+      22000 # Syncthing syncing
+    ];
     firewall.allowedUDPPorts = [ 22000 ];
   };
 
