@@ -35,6 +35,7 @@
     fishPlugins.tide
     firefox
     git
+    godot
     kate
     krita
     micro
