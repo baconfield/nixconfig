@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
   networking = {
     hostName = "TanukiGrove";
     firewall.allowedTCPPorts = [ 5600 8384 22000 ];
