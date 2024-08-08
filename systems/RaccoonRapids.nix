@@ -2,9 +2,8 @@
 
 {
   networking = {
-    hostName = "RaccoonRapids";
-    firewall.allowedTCPPorts = [ 5600 ];
-    firewall.allowedUDPPorts = [];
+    firewall.allowedTCPPorts = [ 5600 22000];
+    firewall.allowedUDPPorts = [ 22000 ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -14,7 +13,8 @@
     gping
     micro
     neofetch
+    neovim
   ];
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.11";
 }

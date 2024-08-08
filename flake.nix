@@ -36,9 +36,9 @@
     nixosConfigurations.RaccoonRapids = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./server.nix
+        ./proxmox.nix
+        ./services/syncthing.nix
         ./systems/RaccoonRapids.nix
-        ./hardware/RaccoonRapids.nix
       ];
     };
     nixosConfigurations.TanukiGrove = nixpkgs.lib.nixosSystem {

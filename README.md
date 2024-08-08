@@ -1,21 +1,16 @@
 # NixOS Configurations
-Personal NixOS configs, you may find this useful as a reference. Currently makes use flakes and agenix, might expand into using Home Manager or NixOps.
+Personal NixOS configs, you may find this useful as a reference. Currently uses flakes and agenix, might expand into using Home Manager and/or NixOps.
 
-## Systems:
-BaconField - Nextcloud VM
 
-TortiseCove - Config no longer in use, primary role is to host Nextcloud, Jellyfin, and Syncthing services. Makes use of ZFS for data integrety, whereas Nginx and acme are configured around DNS-01 based challenges for the local certs.
+## Systems
+**RaccoonRapids** - An LXC container, single purpose Syncthing node
 
-TanukiGrove - Config no longer in use, primary role of being a syncthing node.
-
-DoveTrail - Config no longer in use, primary role is to host services such as uptime-kuma, adguard-home, and Syncthing.
-
-RaccoonRapids - Staging VM for bigger changes, sees very little use currently.
-
-JellyCoast - Syncthing node
+#### Unused configs
+You likely will see a few unused system/service configs in this repo that were left in as a reference. These should still function, however they have not been tested in some time.
 
 ## Usage
 Currently, I run `nixos-rebuild switch --flake github:baconfield/nixconfig#TargetHostname` to build and switch to a specific config. Whenever I make changes to the repo, `nix-store --gc` is run to clear the outdated flake.
+
 
 ### Updating flakes
 First make sure your local nix config is setup to use the experimental feature.
@@ -32,4 +27,37 @@ or on NixOS:
 After that, you can run `nix flake update` to update the `flake.lock` file.
 
 ### Modifying secrets
-While in `secrets/`, running `nix run github:ryantm/agenix -- -e {secret}.age` will allow you to modify the contents of the secret, whereas `nix run github:ryantm/agenix -- -r` will rekey them.
+From within `secrets/`, you can configure keys using `secrets.nix`, and modify the secrets with the following commands:
+```sh
+# Modifying a secret
+nix run github:ryantm/agenix -- -e {secret}.age
+# Rekeying the secrets
+nix run github:ryantm/agenix -- -r
+```
+
+### Proxmox template
+Creating your own template might be the most friction-free route to getting NixOS containers on Proxmox. After creating a container with the template, I'd recommend configuring that with a bare minimum config and creating a new template from that. For more details, see [here](https://nixos.wiki/wiki/Proxmox_Virtual_Environment#LXC).
+
+```sh
+# Generate an LXC template to upload to a Proxmox server
+nix run github:nix-community/nixos-generators -- --format proxmox-lxc
+```
+```nix
+# Basic config
+{ pkgs, modulesPath, ... }:
+
+{
+  imports = [
+    (modulesPath + "/virtualisation/proxmox-lxc.nix")
+  ];
+
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+  ];
+
+  nix.settings.experimental-features = "nix-command flakes";
+
+  system.stateVersion = "23.11";
+}
+```
