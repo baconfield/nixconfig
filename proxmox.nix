@@ -16,7 +16,7 @@
     ports = [ 5600 ];
   };
 
-  time.timeZone = "America/Central";
+  time.timeZone = "America/Chicago";
 
   programs.fish.enable = true;
 

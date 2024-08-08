@@ -32,7 +32,7 @@
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
 
-  time.timeZone = "America/Central";
+  time.timeZone = "America/Chicago";
 
   programs.fish.enable = true;
 
