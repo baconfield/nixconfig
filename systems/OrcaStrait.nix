@@ -17,10 +17,10 @@
     btop
     fishPlugins.tide
     git
-    gping
-    micro
+    fastfetch
+    lazygit
     neofetch
-    s-tui
+    neovim
   ];
 
   system.stateVersion = "23.11";
