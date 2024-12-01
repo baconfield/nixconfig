@@ -34,16 +34,4 @@
   nixpkgs.config.allowUnfree = true;
 
   time.timeZone = "America/Chicago";
-
-  programs.fish.enable = true;
-
-  users.users.tjcater = {
-    isNormalUser = true;
-    shell = pkgs.fish;
-    description = "KaijuBacon";
-    extraGroups = [ "networkmanager" "wheel" ];
-    openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6PkhvCO2rO0CXuszoknbAyKcxZ2ucBz2KHP6l2I3l3"
-    ];
-  };
 }

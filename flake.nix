@@ -16,6 +16,7 @@
     nixosConfigurations.HydraValley = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./users.nix
         ./server.nix
         ./systems/HydraValley.nix
         ./hardware/HydraValley.nix
@@ -24,6 +25,7 @@
     nixosConfigurations.OrcaStrait = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ./users.nix
         ./proxmox.nix
         ./systems/OrcaStrait.nix
       ];
