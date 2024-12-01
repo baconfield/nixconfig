@@ -1,25 +1,18 @@
 # NixOS Configurations
 Personal NixOS configs, you may find this useful as a reference. Currently uses flakes and agenix, might expand into using Home Manager and/or NixOps.
 
-
 ## Systems
+- **HydraValley** (Unused): 7840hs mini-pc, docker host
+- **HydraValley.bak** (Unused): 7840hs mini-pc, developement environment which uses the Plasma DE
+- **JellyCoast** (Unused): LXC container, single purpose Jellyfin node
+- **OrcaStrait**: LXC container, docker host
+- **SalamanderGrotto** (Unused): LXC container, single purpose Jellyseer node
+- **RaccoonRapids** (Unused): LXC container, single purpose Syncthing node
 
-**HydraValley** - 7840hs mini-pc, docker host
-
-**HydraValley.bak** - 7840hs mini-pc, primarily a developement environment which uses the Plasma DE
-
-**JellyCoast** - An LXC container, single purpose Jellyfin node
-
-**SalamanderGrotto** - An LXC container, single purpose Jellyseer node
-
-**RaccoonRapids** - An LXC container, single purpose Syncthing node
-
-#### Unused configs
-You likely will see a few unused system/service configs in this repo that were left in as a reference. These should still function, however they have not been tested in some time.
+> Note: This repository contains no longer used configs, these may or may not still work, and were left in as reference material.
 
 ## Usage
 Currently, I run `nixos-rebuild switch --flake github:baconfield/nixconfig#TargetHostname` to build and switch to a specific config. Whenever I make changes to the repo, `nix-store --gc` is run to clear the outdated flake.
-
 
 ### Updating flakes
 First make sure your local nix config is setup to use the experimental feature.
@@ -78,4 +71,3 @@ As root:
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 nix-channel --update
 ```
-

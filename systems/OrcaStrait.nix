@@ -3,7 +3,6 @@
 {
   networking.firewall = {
     allowedTCPPorts = [
-      5001 # Dockge
       5600 # SSH
     ];
     allowedUDPPorts = [
