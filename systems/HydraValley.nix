@@ -19,6 +19,7 @@
     git
     micro
     nano
+    nh
     s-tui
     wget
     vim
