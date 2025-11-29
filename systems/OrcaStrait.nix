@@ -16,6 +16,7 @@
     btop
     fishPlugins.tide
     git
+    gpg
     fastfetch
     lazygit
     neofetch
