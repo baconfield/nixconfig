@@ -18,7 +18,7 @@
     settings.PasswordAuthentication = false;
     ports = [ 5600 ];
   };
-
+  services.pcscd.enable = true;
   services.tailscale.enable = true;
 
   time.timeZone = "America/Chicago";

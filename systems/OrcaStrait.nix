@@ -21,6 +21,7 @@
     lazygit
     neofetch
     neovim
+    pinentry-curses
   ];
 
   system.stateVersion = "23.11";

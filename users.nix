@@ -2,6 +2,11 @@
 
 {
   programs.fish.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     pinentryFlavor = "curses";
+     enableSSHSupport = true;
+  };
 
   users.users.tjcater = {
     isNormalUser = true;
